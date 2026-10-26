@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b2a54">
-  <meta name="description" content="HillsSure Point — insurance enquiries for motor, health, term life and home insurance. Contact us on WhatsApp for assistance.">
-  <title>HillsSure Point | Insurance Enquiries</title>
+  <meta name="description" content="HillsSure Point — Garo Hills Own Policy Hub. Insurance enquiries for motor, health, term life and home insurance.">
+  <title>HillsSure Point | Garo Hills Own Policy Hub</title>
   <style>
     :root{--navy:#092957;--blue:#0969cf;--sky:#eaf5ff;--ink:#102b50;--muted:#5e718a;--green:#079b70;--line:#dbe8f6;--white:#fff}
     *{box-sizing:border-box}
@@ -19,7 +19,7 @@
     .logo{width:47px;height:47px;border-radius:15px;background:linear-gradient(145deg,#0876e4,#082957);display:grid;place-items:center;color:#fff;font-size:25px;box-shadow:0 8px 20px #0a64c533}
     .brand strong{display:block;font-size:clamp(18px,2.2vw,25px);line-height:1.15;letter-spacing:-.6px}
     .brand strong span{color:var(--blue)}
-    .brand small{color:var(--muted);font-size:12px}
+    .brand small{color:var(--muted);font-size:12px}.brand small.tagline{display:inline-block;margin-top:4px;color:var(--blue);font-weight:800;font-size:11px;letter-spacing:.15px}
     nav{display:flex;align-items:center;gap:23px}
     nav a{text-decoration:none;font-size:13px;font-weight:650;color:#304865}
     nav a:hover{color:var(--blue)}
@@ -112,7 +112,7 @@
   <div class="wrap nav">
     <a class="brand" href="#home" aria-label="HillsSure Point home">
       <div class="logo" aria-hidden="true">⬡</div>
-      <div><strong>HillsSure <span>Point</span></strong><small>Your Safety&nbsp; | &nbsp;Our Priority</small></div>
+      <div><strong>HillsSure <span>Point</span></strong><small class="tagline">Garo Hills Own Policy Hub</small></div>
     </a>
     <nav aria-label="Main navigation">
       <a href="#home">Home</a><a href="#services">Insurance Services</a><a href="#motor">Motor Quote</a><a href="#why">Why Us</a>
@@ -129,7 +129,7 @@
         <h1>Protect What<br><span>Matters Most.</span></h1>
         <p>Explore insurance options for your vehicle, health, family and home. Get personal assistance with your enquiry.</p>
         <a class="btn light" href="#services">Explore Insurance Options&nbsp; →</a>
-        <p class="hero-note">Enquiry support by HillsSure Point. Product availability and eligibility may vary.</p>
+        <p class="hero-note">Enquiry support by HillsSure Point — Garo Hills Own Policy Hub. Product availability and eligibility may vary.</p>
       </div>
       <div class="hero-art" aria-hidden="true">
         <div class="orbit"><div class="shield">✓</div></div>
@@ -183,10 +183,12 @@
           <label for="motor-name">Your name (optional)</label>
           <input id="motor-name" type="text" placeholder="Enter your name" autocomplete="name">
         </div>
+        <div class="notice" style="margin:16px 0">📎 <strong>Documents, if requested:</strong> You may be asked to share your vehicle RC, PAN card or Aadhaar through WhatsApp. Please share documents only when necessary and only after confirming what is required. This website cannot attach files to WhatsApp automatically.</div>
         <button class="btn" id="motor-submit" type="button">Continue on WhatsApp&nbsp; →</button>
         <div class="or">or</div>
         <a class="btn whatsapp" href="https://wa.me/918837499037?text=Hello%20HillsSure%20Point%2C%20I%20need%20motor%20insurance%20assistance." target="_blank" rel="noopener">☏ Chat on WhatsApp · +91 88374 99037</a>
-        <p class="help">This form sends an enquiry to WhatsApp; it does not calculate premiums or issue a policy.</p>
+        <a class="btn whatsapp" id="motor-docs" href="https://wa.me/918837499037?text=Hello%20HillsSure%20Point%2C%20I%20need%20motor%20insurance%20assistance.%20Please%20tell%20me%20which%20documents%20are%20required." target="_blank" rel="noopener">📎 WhatsApp &amp; Attach Documents</a>
+        <p class="help">WhatsApp will open so you can attach any requested files yourself. Never share OTPs, passwords, UPI PINs or payment PINs. This form does not calculate premiums or issue a policy.</p>
       </div>
     </div>
   </section>
@@ -217,14 +219,14 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a class="brand" href="#home"><div class="logo">⬡</div><div><strong>HillsSure <span>Point</span></strong><small>Your Safety&nbsp; | &nbsp;Our Priority</small></div></a>
+        <a class="brand" href="#home"><div class="logo">⬡</div><div><strong>HillsSure <span>Point</span></strong><small class="tagline">Garo Hills Own Policy Hub</small></div></a>
         <p>Insurance enquiry assistance for individuals and families.</p>
       </div>
       <div><h4>Quick Links</h4><a href="#home">Home</a><a href="#services">Insurance Services</a><a href="#motor">Motor Enquiry</a><a href="#why">Why Us</a></div>
       <div><h4>Insurance Services</h4><a href="#motor">Motor Insurance</a><a href="#enquiry" data-type="Health Insurance">Health Insurance</a><a href="#enquiry" data-type="Term Life Insurance">Term Life Insurance</a><a href="#enquiry" data-type="Home Insurance">Home Insurance</a></div>
       <div><h4>Contact Us</h4><a href="https://wa.me/918837499037" target="_blank" rel="noopener">☏ +91 88374 99037</a><a href="mailto:hillssurepoint@gmail.com">✉ hillssurepoint@gmail.com</a><p>Meghalaya, India</p></div>
     </div>
-    <p class="disclaimer">HillsSure Point is an enquiry and assistance brand. Insurance products, quotes, eligibility and issuance are subject to the relevant insurer and the authorised distribution platform's terms. HillsSure Point is not presented as an official Policybazaar website. Any PbPartner / Policybazaar affiliation should be described only in accordance with applicable platform rules and permissions.</p>
+    <p class="disclaimer">HillsSure Point is an insurance enquiry and assistance brand. “Garo Hills Own Policy Hub” is a tagline, not the business name. Insurance products, quotes, eligibility and issuance are subject to the relevant insurer and the authorised distribution platform's terms. HillsSure Point is not presented as an official Policybazaar website. Any PbPartner / Policybazaar affiliation should be described only in accordance with applicable platform rules and permissions.</p>
     <div class="footer-bottom"><span>© <span id="year"></span> HillsSure Point. All rights reserved.</span><span>Insurance enquiries · WhatsApp assistance</span></div>
   </div>
 </footer>
@@ -262,13 +264,13 @@
     const reg = registrationInput.value.trim();
     if (!reg) { registrationInput.focus(); registrationInput.setCustomValidity('Please enter the vehicle registration number.'); registrationInput.reportValidity(); registrationInput.addEventListener('input',()=>registrationInput.setCustomValidity(''),{once:true}); return; }
     const name = document.getElementById('motor-name').value.trim();
-    const message = `Hello HillsSure Point, I would like motor insurance assistance.%0AVehicle category: ${encodeURIComponent(category)}%0ARegistration number: ${encodeURIComponent(reg)}${name ? '%0AName: '+encodeURIComponent(name) : ''}`;
-    window.open('https://wa.me/918837499037?text='+message, '_blank', 'noopener');
+    const message = `Hello Garo Hills Own Policy Hub, I would like motor insurance assistance.\nVehicle category: ${category}\nRegistration number: ${reg}${name ? '\nName: '+name : ''}\nPlease tell me which documents are required. I will attach any requested documents in WhatsApp.`;
+    window.open('https://wa.me/918837499037?text='+encodeURIComponent(message), '_blank', 'noopener');
   });
 
   document.querySelectorAll('[data-type]').forEach(link => link.addEventListener('click', () => {
     const type = link.dataset.type;
-    const href = 'https://wa.me/918837499037?text='+encodeURIComponent(`Hello HillsSure Point, I would like to enquire about ${type}.`);
+    const href = 'https://wa.me/918837499037?text='+encodeURIComponent(`Hello Garo Hills Own Policy Hub, I would like to enquire about ${type}.`);
     document.getElementById('general-whatsapp').href = href;
   }));
   document.getElementById('year').textContent = new Date().getFullYear();
