@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2a54">
+  <meta name="description" content="HillsSure Point — insurance enquiries for motor, health, term life and home insurance. Contact us on WhatsApp for assistance.">
+  <title>HillsSure Point | Insurance Enquiries</title>
+  <style>
+    :root{--navy:#092957;--blue:#0969cf;--sky:#eaf5ff;--ink:#102b50;--muted:#5e718a;--green:#079b70;--line:#dbe8f6;--white:#fff}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+    a{color:inherit}
+    .wrap{width:min(1160px,calc(100% - 36px));margin:auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
+    .logo{width:47px;height:47px;border-radius:15px;background:linear-gradient(145deg,#0876e4,#082957);display:grid;place-items:center;color:#fff;font-size:25px;box-shadow:0 8px 20px #0a64c533}
+    .brand strong{display:block;font-size:clamp(18px,2.2vw,25px);line-height:1.15;letter-spacing:-.6px}
+    .brand strong span{color:var(--blue)}
+    .brand small{color:var(--muted);font-size:12px}
+    nav{display:flex;align-items:center;gap:23px}
+    nav a{text-decoration:none;font-size:13px;font-weight:650;color:#304865}
+    nav a:hover{color:var(--blue)}
+    .btn{border:0;display:inline-flex;justify-content:center;align-items:center;gap:9px;border-radius:999px;padding:13px 19px;background:var(--blue);color:#fff;font-weight:750;text-decoration:none;cursor:pointer;box-shadow:0 8px 20px #0969cf22;transition:transform .15s,background .15s}
+    .btn:hover{background:#0758af;transform:translateY(-1px)}
+    .btn.whatsapp{background:var(--green)}
+    .btn.whatsapp:hover{background:#07845f}
+    .btn.light{background:#fff;color:var(--navy);box-shadow:none}
+    .hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(circle at 80% 15%,#2b85d5 0,transparent 30%),linear-gradient(115deg,#082957 0%,#0c4f8e 55%,#1676b9 100%)}
+    .hero:after{content:"";position:absolute;width:520px;height:520px;border:1px solid #ffffff1c;border-radius:50%;right:-120px;top:-190px;box-shadow:0 0 0 45px #ffffff08,0 0 0 100px #ffffff06}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center;padding:72px 0 78px}
+    .eyebrow{display:inline-flex;border:1px solid #ffffff58;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:750;letter-spacing:.5px;background:#ffffff0d}
+    h1{font-size:clamp(39px,5vw,64px);line-height:1.04;letter-spacing:-2px;margin:19px 0 18px;max-width:650px}
+    h1 span{color:#60d8ff}
+    .hero p{color:#e1efff;font-size:18px;max-width:570px;margin:0 0 27px}
+    .hero-note{font-size:12px!important;color:#c7ddf5!important;margin-top:14px!important}
+    .hero-art{position:relative;min-height:300px;display:grid;place-items:center}
+    .orbit{width:min(360px,100%);aspect-ratio:1;border-radius:50%;background:linear-gradient(140deg,#ffffff26,#ffffff08);border:1px solid #ffffff3a;display:grid;place-items:center;box-shadow:inset 0 0 60px #ffffff0c}
+    .shield{width:165px;height:190px;clip-path:polygon(50% 0,94% 16%,88% 66%,50% 100%,12% 66%,6% 16%);background:linear-gradient(145deg,#fff,#bde7ff);display:grid;place-items:center;color:var(--blue);font-size:80px;filter:drop-shadow(0 20px 30px #001c4266)}
+    .float-card{position:absolute;background:#fff;color:var(--ink);padding:13px 16px;border-radius:16px;box-shadow:0 15px 40px #001b3b3d;font-size:13px;font-weight:750}
+    .float-card span{display:block;color:var(--muted);font-weight:500;font-size:11px}
+    .fc1{left:0;top:43px}.fc2{right:-5px;bottom:38px}
+    section{padding:64px 0}
+    .section-head{text-align:center;max-width:700px;margin:0 auto 32px}
+    .kicker{color:var(--blue);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px}
+    h2{font-size:clamp(28px,3.5vw,39px);letter-spacing:-1px;line-height:1.15;margin:9px 0 12px}
+    .section-head p,.muted{color:var(--muted)}
+    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+    .service{border:1px solid var(--line);border-radius:20px;padding:24px 21px;background:linear-gradient(155deg,#f5fbff,#fff 75%);min-height:220px;display:flex;flex-direction:column;align-items:flex-start}
+    .service:nth-child(2){background:linear-gradient(155deg,#fff5f7,#fff 75%)}
+    .service:nth-child(3){background:linear-gradient(155deg,#f6f4ff,#fff 75%)}
+    .service:nth-child(4){background:linear-gradient(155deg,#edfcf6,#fff 75%)}
+    .service-icon{width:52px;height:52px;border-radius:17px;background:#d8ecff;color:var(--blue);display:grid;place-items:center;font-size:26px;margin-bottom:18px}
+    .service:nth-child(2) .service-icon{background:#ffe1e8;color:#d93960}
+    .service:nth-child(3) .service-icon{background:#e6e1ff;color:#6650c8}
+    .service:nth-child(4) .service-icon{background:#d8f8e9;color:#07845f}
+    .service h3{margin:0 0 7px;font-size:18px}
+    .service p{margin:0 0 18px;color:var(--muted);font-size:13px}
+    .service a{margin-top:auto;color:var(--blue);font-weight:800;font-size:13px;text-decoration:none}
+    .motor{background:linear-gradient(120deg,#f1f8ff,#fff)}
+    .motor-grid{display:grid;grid-template-columns:1fr .88fr;gap:38px;align-items:start}
+    .motor-copy h2{margin-top:9px}
+    .motor-copy>p{color:var(--muted);max-width:600px}
+    .vehicle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0}
+    .vehicle{border:1px solid #c9def4;border-radius:15px;padding:17px 10px;background:#fff;text-align:center;cursor:pointer;color:var(--ink);font:inherit;transition:.15s}
+    .vehicle:hover,.vehicle[aria-pressed="true"]{border:2px solid var(--blue);padding:16px 9px;background:#f7fbff;box-shadow:0 8px 20px #0969cf12}
+    .vehicle .vicon{font-size:30px;display:block;margin-bottom:7px}
+    .vehicle strong{display:block;font-size:13px}
+    .vehicle small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+    .trust-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .trust-pill{display:flex;align-items:center;gap:7px;color:#345575;font-size:12px;font-weight:650;background:#e6f3ff;border-radius:10px;padding:10px 12px}
+    .form-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:25px;box-shadow:0 15px 45px #123c6810}
+    .form-title{display:flex;align-items:center;gap:11px;margin-bottom:20px}
+    .form-title .service-icon{margin:0;width:44px;height:44px}
+    .form-title h3{font-size:19px;margin:0}
+    .step{display:flex;gap:11px;align-items:flex-start;margin:15px 0 9px}
+    .step-num{width:26px;height:26px;flex:0 0 26px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+    .step label,.field label{display:block;font-size:12px;font-weight:750;margin-bottom:7px}
+    .field{margin:14px 0}
+    input,select,textarea{font:inherit;width:100%;padding:13px 13px;border:1px solid #cbd9e8;border-radius:10px;background:#fff;color:var(--ink);outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #0969cf18}
+    .help{font-size:11px;color:var(--muted);margin:7px 0 0}
+    .form-card .btn{width:100%;border-radius:10px;margin-top:8px}
+    .or{display:flex;align-items:center;gap:12px;color:#8393a8;font-size:12px;justify-content:center;margin:15px 0}
+    .or:before,.or:after{content:"";height:1px;background:var(--line);width:50px}
+    .hidden{display:none!important}
+    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .why{text-align:center;padding:16px}
+    .why .service-icon{margin:0 auto 12px;border-radius:50%;width:58px;height:58px}
+    .why h3{font-size:15px;margin:0 0 6px}
+    .why p{font-size:13px;color:var(--muted);margin:0}
+    .contact-band{background:linear-gradient(105deg,#0b3f7b,#0873ce);color:#fff;border-radius:22px;padding:26px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .contact-band h2{font-size:24px;margin:0 0 5px}
+    .contact-band p{margin:0;color:#d7eaff;font-size:14px}
+    footer{background:#061f42;color:#fff;padding:40px 0 18px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+    footer .brand small{color:#c7d8ec}
+    footer h4{margin:0 0 12px;font-size:13px}
+    footer a,footer p{display:block;color:#c7d8ec;text-decoration:none;font-size:12px;margin:7px 0}
+    footer a:hover{color:#fff}
+    .footer-bottom{border-top:1px solid #ffffff25;margin-top:28px;padding-top:16px;display:flex;justify-content:space-between;gap:15px;color:#c7d8ec;font-size:11px}
+    .disclaimer{font-size:11px;color:#8da2bb;max-width:800px;margin-top:14px}
+    .notice{background:#fff8e8;border:1px solid #f0dfb6;border-radius:12px;padding:13px 15px;color:#6c5422;font-size:12px;margin-top:20px}
+    @media(max-width:900px){nav{gap:12px}nav a{font-size:12px}.hero-grid{gap:20px}.services{grid-template-columns:repeat(2,1fr)}.motor-grid{grid-template-columns:1fr 1fr;gap:22px}.footer-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:680px){.wrap{width:min(100% - 28px,1160px)}.nav{min-height:68px}.brand small{font-size:10px}nav{display:none}.nav>.btn{padding:10px 12px;font-size:12px}.hero-grid{grid-template-columns:1fr;padding:52px 0 56px}.hero-art{min-height:230px}.orbit{width:230px}.shield{width:110px;height:130px;font-size:56px}.fc1{left:2px;top:20px}.fc2{right:0;bottom:10px}.hero p{font-size:16px}.services{gap:10px}.service{padding:17px 14px;min-height:205px}.service h3{font-size:15px}.service p{font-size:12px}.motor-grid{grid-template-columns:1fr}.vehicle-grid{gap:7px}.vehicle{padding:13px 5px}.vehicle:hover,.vehicle[aria-pressed="true"]{padding:12px 4px}.vehicle strong{font-size:11px}.vehicle small{font-size:10px}.form-card{padding:20px}.why-grid{grid-template-columns:repeat(2,1fr);gap:6px}.contact-band{padding:24px;align-items:flex-start;flex-direction:column}.footer-grid{grid-template-columns:1fr 1fr;gap:22px}.footer-grid>div:first-child{grid-column:1/-1}.footer-bottom{flex-direction:column}.section-head{text-align:left}.section-head p{font-size:14px}section{padding:48px 0}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="HillsSure Point home">
+      <div class="logo" aria-hidden="true">⬡</div>
+      <div><strong>HillsSure <span>Point</span></strong><small>Your Safety&nbsp; | &nbsp;Our Priority</small></div>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a><a href="#services">Insurance Services</a><a href="#motor">Motor Quote</a><a href="#why">Why Us</a>
+    </nav>
+    <a class="btn" href="https://wa.me/918837499037?text=Hello%20HillsSure%20Point%2C%20I%20would%20like%20insurance%20assistance." target="_blank" rel="noopener">☏ WhatsApp Us</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">MOTOR &nbsp; | &nbsp; HEALTH &nbsp; | &nbsp; TERM LIFE &nbsp; | &nbsp; HOME</span>
+        <h1>Protect What<br><span>Matters Most.</span></h1>
+        <p>Explore insurance options for your vehicle, health, family and home. Get personal assistance with your enquiry.</p>
+        <a class="btn light" href="#services">Explore Insurance Options&nbsp; →</a>
+        <p class="hero-note">Enquiry support by HillsSure Point. Product availability and eligibility may vary.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit"><div class="shield">✓</div></div>
+        <div class="float-card fc1">🛡️ Personal assistance<span>Help through your enquiry</span></div>
+        <div class="float-card fc2">💬 WhatsApp support<span>Speak with us directly</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Insurance services</span><h2>Cover for what matters to you</h2><p>Choose the type of insurance you want to enquire about. We’ll help you understand the next steps.</p></div>
+      <div class="services">
+        <article class="service"><div class="service-icon">🚘</div><h3>Motor Insurance</h3><p>Two-wheeler, private car and commercial vehicle enquiries.</p><a href="#motor">Get motor assistance →</a></article>
+        <article class="service"><div class="service-icon">♡</div><h3>Health Insurance</h3><p>Ask about individual or family health insurance options.</p><a href="#enquiry" data-type="Health Insurance">Enquire now →</a></article>
+        <article class="service"><div class="service-icon">♧</div><h3>Term Life Insurance</h3><p>Explore life cover options to help protect your family financially.</p><a href="#enquiry" data-type="Term Life Insurance">Enquire now →</a></article>
+        <article class="service"><div class="service-icon">⌂</div><h3>Home Insurance</h3><p>Ask about protection options for your home and belongings.</p><a href="#enquiry" data-type="Home Insurance">Enquire now →</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="motor" id="motor">
+    <div class="wrap motor-grid">
+      <div class="motor-copy">
+        <span class="kicker">Motor insurance</span>
+        <h2>Quick & easy motor enquiry</h2>
+        <p>First choose your vehicle category. The registration number field will appear only after you make a selection.</p>
+        <div class="vehicle-grid" role="group" aria-label="Select vehicle category">
+          <button class="vehicle" type="button" data-category="Two-Wheeler" aria-pressed="false"><span class="vicon">🏍️</span><strong>Two-Wheeler</strong><small>Bike / Scooter</small></button>
+          <button class="vehicle" type="button" data-category="Private Car" aria-pressed="false"><span class="vicon">🚗</span><strong>Private Car</strong><small>Personal vehicle</small></button>
+          <button class="vehicle" type="button" data-category="Commercial Vehicle" aria-pressed="false"><span class="vicon">🚚</span><strong>Commercial</strong><small>Goods / passenger</small></button>
+        </div>
+        <div class="trust-row"><div class="trust-pill">🛡️ Personal assistance</div><div class="trust-pill">⚡ Simple enquiry</div><div class="trust-pill">💬 WhatsApp follow-up</div></div>
+        <div class="notice">Please share only information needed for your enquiry. Do not send passwords, OTPs, payment PINs, or other confidential credentials.</div>
+      </div>
+      <div class="form-card" id="motor-form">
+        <div class="form-title"><div class="service-icon">🚘</div><h3>Get Motor Insurance Assistance</h3></div>
+        <div class="field">
+          <label for="vehicle-category">1. Select vehicle category</label>
+          <select id="vehicle-category" required>
+            <option value="">Choose vehicle category</option>
+            <option>Two-Wheeler</option><option>Private Car</option><option>Commercial Vehicle</option>
+          </select>
+        </div>
+        <div class="field hidden" id="registration-field">
+          <label for="registration">2. Vehicle registration number</label>
+          <input id="registration" type="text" placeholder="e.g. ML05AB1234" maxlength="15" autocomplete="off">
+          <p class="help">Your registration number will be included in the WhatsApp enquiry you send.</p>
+        </div>
+        <div class="field">
+          <label for="motor-name">Your name (optional)</label>
+          <input id="motor-name" type="text" placeholder="Enter your name" autocomplete="name">
+        </div>
+        <button class="btn" id="motor-submit" type="button">Continue on WhatsApp&nbsp; →</button>
+        <div class="or">or</div>
+        <a class="btn whatsapp" href="https://wa.me/918837499037?text=Hello%20HillsSure%20Point%2C%20I%20need%20motor%20insurance%20assistance." target="_blank" rel="noopener">☏ Chat on WhatsApp · +91 88374 99037</a>
+        <p class="help">This form sends an enquiry to WhatsApp; it does not calculate premiums or issue a policy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Why HillsSure Point</span><h2>Support at every step</h2><p>Clear communication and personal help as you explore insurance options.</p></div>
+      <div class="why-grid">
+        <div class="why"><div class="service-icon">🛡️</div><h3>Guided Enquiries</h3><p>Help understanding the next steps.</p></div>
+        <div class="why"><div class="service-icon">✓</div><h3>Clear Information</h3><p>Discuss options and eligibility.</p></div>
+        <div class="why"><div class="service-icon">💬</div><h3>Personal Support</h3><p>Reach us directly on WhatsApp.</p></div>
+        <div class="why"><div class="service-icon">📍</div><h3>Personal Assistance</h3><p>Friendly support for your insurance enquiries.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="enquiry" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact-band">
+        <div><h2>Have an insurance question?</h2><p>Tell us what you need and we’ll follow up through WhatsApp.</p><p style="margin-top:8px"><a href="mailto:hillssurepoint@gmail.com" style="color:#fff;font-weight:750">✉ hillssurepoint@gmail.com</a></p></div>
+        <a class="btn whatsapp" id="general-whatsapp" href="https://wa.me/918837499037?text=Hello%20HillsSure%20Point%2C%20I%20would%20like%20insurance%20assistance." target="_blank" rel="noopener">Message +91 88374 99037&nbsp; →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#home"><div class="logo">⬡</div><div><strong>HillsSure <span>Point</span></strong><small>Your Safety&nbsp; | &nbsp;Our Priority</small></div></a>
+        <p>Insurance enquiry assistance for individuals and families.</p>
+      </div>
+      <div><h4>Quick Links</h4><a href="#home">Home</a><a href="#services">Insurance Services</a><a href="#motor">Motor Enquiry</a><a href="#why">Why Us</a></div>
+      <div><h4>Insurance Services</h4><a href="#motor">Motor Insurance</a><a href="#enquiry" data-type="Health Insurance">Health Insurance</a><a href="#enquiry" data-type="Term Life Insurance">Term Life Insurance</a><a href="#enquiry" data-type="Home Insurance">Home Insurance</a></div>
+      <div><h4>Contact Us</h4><a href="https://wa.me/918837499037" target="_blank" rel="noopener">☏ +91 88374 99037</a><a href="mailto:hillssurepoint@gmail.com">✉ hillssurepoint@gmail.com</a><p>Meghalaya, India</p></div>
+    </div>
+    <p class="disclaimer">HillsSure Point is an enquiry and assistance brand. Insurance products, quotes, eligibility and issuance are subject to the relevant insurer and the authorised distribution platform's terms. HillsSure Point is not presented as an official Policybazaar website. Any PbPartner / Policybazaar affiliation should be described only in accordance with applicable platform rules and permissions.</p>
+    <div class="footer-bottom"><span>© <span id="year"></span> HillsSure Point. All rights reserved.</span><span>Insurance enquiries · WhatsApp assistance</span></div>
+  </div>
+</footer>
+<script>
+  const categorySelect = document.getElementById('vehicle-category');
+  const registrationField = document.getElementById('registration-field');
+  const registrationInput = document.getElementById('registration');
+  const vehicleButtons = [...document.querySelectorAll('.vehicle')];
+
+  function chooseCategory(category) {
+    categorySelect.value = category || '';
+    const chosen = Boolean(category);
+    registrationField.classList.toggle('hidden', !chosen);
+    registrationInput.required = chosen;
+    vehicleButtons.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.category === category)));
+    if (!chosen) registrationInput.value = '';
+  }
+  categorySelect.addEventListener('change', () => chooseCategory(categorySelect.value));
+  vehicleButtons.forEach(btn => btn.addEventListener('click', () => {
+    chooseCategory(btn.dataset.category);
+    document.getElementById('motor-form').scrollIntoView({behavior:'smooth',block:'center'});
+    if (chosenFocus()) registrationInput.focus({preventScroll:true});
+  }));
+  function chosenFocus(){ return !registrationField.classList.contains('hidden'); }
+
+  document.getElementById('motor-submit').addEventListener('click', () => {
+    const category = categorySelect.value;
+    if (!category) {
+      categorySelect.focus();
+      categorySelect.setCustomValidity('Please select a vehicle category first.');
+      categorySelect.reportValidity();
+      categorySelect.addEventListener('change', () => categorySelect.setCustomValidity(''), {once:true});
+      return;
+    }
+    const reg = registrationInput.value.trim();
+    if (!reg) { registrationInput.focus(); registrationInput.setCustomValidity('Please enter the vehicle registration number.'); registrationInput.reportValidity(); registrationInput.addEventListener('input',()=>registrationInput.setCustomValidity(''),{once:true}); return; }
+    const name = document.getElementById('motor-name').value.trim();
+    const message = `Hello HillsSure Point, I would like motor insurance assistance.%0AVehicle category: ${encodeURIComponent(category)}%0ARegistration number: ${encodeURIComponent(reg)}${name ? '%0AName: '+encodeURIComponent(name) : ''}`;
+    window.open('https://wa.me/918837499037?text='+message, '_blank', 'noopener');
+  });
+
+  document.querySelectorAll('[data-type]').forEach(link => link.addEventListener('click', () => {
+    const type = link.dataset.type;
+    const href = 'https://wa.me/918837499037?text='+encodeURIComponent(`Hello HillsSure Point, I would like to enquire about ${type}.`);
+    document.getElementById('general-whatsapp').href = href;
+  }));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
