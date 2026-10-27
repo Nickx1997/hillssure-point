@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#092957">
+<title>HillsSure Point | Customer Account</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--navy:#092957;--blue:#0969cf;--sky:#eaf5ff;--ink:#102b50;--muted:#5e718a;--line:#dbe8f6;--green:#07845f;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:#f4f8fd;color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:#fff;border-bottom:1px solid var(--line);padding:16px 20px;position:sticky;top:0;z-index:2}
+.wrap{width:min(1050px,calc(100% - 28px));margin:auto}.nav{display:flex;justify-content:space-between;align-items:center;gap:14px}.brand{font-size:22px;font-weight:850;color:var(--navy);text-decoration:none}.brand span{color:var(--blue)}
+button,.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--blue);color:#fff;font-weight:750;cursor:pointer;text-decoration:none;display:inline-block}button.secondary,.btn.secondary{background:#eaf2fb;color:var(--navy)}button.danger{background:#fff0ef;color:var(--red)}button:disabled{opacity:.55;cursor:not-allowed}
+main{padding:30px 0 60px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 10px 30px #0929570a;margin-bottom:18px}
+h1{font-size:clamp(27px,4vw,38px);line-height:1.15;margin:0 0 8px}h2{font-size:22px;margin:0 0 12px}h3{font-size:17px;margin:0 0 8px}.muted,.help{color:var(--muted)}.help{font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.field{margin:13px 0}.field label{display:block;font-size:13px;font-weight:750;margin-bottom:6px}
+input,select,textarea{font:inherit;width:100%;padding:12px;border:1px solid #cbd9e8;border-radius:10px;background:#fff;color:var(--ink)}input:focus,select:focus,textarea:focus{outline:3px solid #0969cf20;border-color:var(--blue)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.status{padding:11px 13px;border-radius:10px;background:var(--sky);margin:12px 0;white-space:pre-wrap}.status.error{background:#fff0ef;color:var(--red)}.hidden{display:none!important}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f6faff}
+.pill{display:inline-block;background:#eaf2fb;border-radius:99px;padding:3px 9px;font-size:11px;font-weight:800}.empty{padding:18px;text-align:center;color:var(--muted);background:#f8fbff;border-radius:12px}
+footer{text-align:center;padding:24px;color:var(--muted);font-size:12px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.card{padding:17px}.nav{align-items:flex-start;flex-direction:column}table{display:block;overflow:auto;white-space:nowrap}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="brand" href="./index.html">HillsSure <span>Point</span></a><div class="row"><a class="btn secondary" href="./index.html">← Main website</a><button id="signout" class="hidden">Sign out</button></div></div></header>
+<main class="wrap">
+  <section id="setup" class="card">
+    <h1>Customer account</h1>
+    <p class="muted">Sign in to view your account, submit documents and check policy updates.</p>
+    <div class="status">Setup required: enter your Supabase Project URL and publishable key below. These are browser-safe values. Never enter a service-role or secret key here.</div>
+    <div class="grid">
+      <div class="field"><label for="projectUrl">Supabase Project URL</label><input id="projectUrl" placeholder="https://your-project.supabase.co" autocomplete="url"></div>
+      <div class="field"><label for="publishableKey">Supabase publishable key</label><input id="publishableKey" placeholder="sb_publishable_..." autocomplete="off"></div>
+    </div>
+    <button id="connect">Connect</button>
+    <p class="help">This page does not save these values to a server. To make the connection permanent, replace the two blank constants in this file with your Project URL and publishable key before publishing.</p>
+  </section>
+
+  <section id="auth" class="grid hidden">
+    <div class="card">
+      <h2>Customer login</h2>
+      <form id="loginForm">
+        <div class="field"><label for="loginEmail">Email</label><input id="loginEmail" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password" required autocomplete="current-password"></div>
+        <button type="submit">Sign in</button>
+        <button type="button" class="secondary" id="forgot">Forgot password?</button>
+      </form>
+    </div>
+    <div class="card">
+      <h2>Create customer account</h2>
+      <form id="signupForm">
+        <div class="field"><label for="fullName">Full name</label><input id="fullName" required maxlength="100" autocomplete="name"></div>
+        <div class="field"><label for="signupEmail">Email</label><input id="signupEmail" type="email" required autocomplete="email"></div>
+        <div class="field"><label for="signupPassword">Password (at least 8 characters)</label><input id="signupPassword" type="password" minlength="8" required autocomplete="new-password"></div>
+        <button type="submit">Register</button>
+        <p class="help">If email confirmation is enabled in Supabase, confirm your email before signing in.</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="dashboard" class="hidden">
+    <div class="card">
+      <div class="row" style="justify-content:space-between"><div><h1 id="welcome">Your dashboard</h1><p class="muted">Your account, uploaded documents and policy updates.</p></div><span id="rolePill" class="pill">CUSTOMER</span></div>
+      <div id="accountStatus" class="status"></div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h2>Upload a document</h2>
+        <p class="muted">Upload only documents requested for your enquiry or policy. Avoid uploading OTPs, PINs or passwords.</p>
+        <form id="uploadForm">
+          <div class="field"><label for="documentType">Document type</label><select id="documentType" required><option value="">Choose type</option><option>Vehicle RC</option><option>Driving licence</option><option>PAN</option><option>Identity document</option><option>Address proof</option><option>Policy document</option><option>Other</option></select></div>
+          <div class="field"><label for="documentFile">Choose file (PDF/JPG/PNG, max 8 MB)</label><input id="documentFile" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
+          <button type="submit">Upload document</button>
+        </form>
+      </div>
+      <div class="card"><h2>Your policy updates</h2><div id="myPolicies" class="empty">No policy updates loaded yet.</div></div>
+    </div>
+    <div class="card"><h2>Your documents</h2><div id="myDocuments" class="empty">No documents loaded yet.</div></div>
+    <section id="adminArea" class="hidden">
+      <div class="card">
+        <h1>Admin panel</h1><p class="muted">Visible only to accounts assigned the admin role in the database. Customer registration cannot grant admin access.</p>
+        <div class="row"><button id="refreshAdmin">Refresh data</button></div>
+        <div id="adminStatus" class="status">Admin data not loaded.</div>
+      </div>
+      <div class="card"><h2>Customers</h2><div id="adminCustomers" class="empty">No data loaded.</div></div>
+      <div class="card"><h2>Uploaded documents</h2><div id="adminDocuments" class="empty">No data loaded.</div></div>
+      <div class="card">
+        <h2>Add a policy update</h2>
+        <form id="policyForm">
+          <div class="grid">
+            <div class="field"><label for="policyCustomer">Customer user ID</label><input id="policyCustomer" required placeholder="UUID from Customers table"></div>
+            <div class="field"><label for="policyNumber">Policy reference (avoid unnecessary sensitive data)</label><input id="policyNumber" maxlength="100" required></div>
+          </div>
+          <div class="field"><label for="policyStatus">Status</label><select id="policyStatus"><option>Enquiry received</option><option>Documents required</option><option>Under review</option><option>Issued</option><option>Renewal due</option><option>Closed</option></select></div>
+          <div class="field"><label for="policyNotes">Update for customer</label><textarea id="policyNotes" rows="3" maxlength="1500"></textarea></div>
+          <button type="submit">Save policy update</button>
+        </form>
+      </div>
+    </section>
+  </section>
+  <div id="message" class="status hidden" role="status" aria-live="polite"></div>
+</main>
+<footer>HillsSure Point · Insurance enquiry assistance. Policy issuance and servicing remain subject to the insurer and authorised platform.</footer>
+<script>
+(() => {
+  // Optional permanent setup: paste only the Project URL and publishable key here.
+  const SUPABASE_URL = "";
+  const SUPABASE_PUBLISHABLE_KEY = "";
+  let client = null, currentUser = null, currentRole = "customer";
+
+  const $ = id => document.getElementById(id);
+  const show = (id, yes=true) => $(id).classList.toggle("hidden", !yes);
+  function message(text, error=false) {
+    $("message").textContent = text;
+    $("message").classList.toggle("error", error);
+    show("message", true);
+  }
+  function escapeHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  }
+  function requireClient() {
+    if (!client) throw new Error("Connect the Supabase project first.");
+  }
+  async function connect(url, key) {
+    if (!window.supabase?.createClient) throw new Error("Could not load the Supabase library. Check your internet connection and reload.");
+    if (!/^https:\/\/[a-zA-Z0-9.-]+$/.test(url)) throw new Error("Enter the full HTTPS Project URL.");
+    if (!key || key.startsWith("sb_secret_") || key.includes("service_role")) throw new Error("Use the publishable key, never a secret/service-role key.");
+    client = window.supabase.createClient(url, key);
+    const {data, error} = await client.auth.getSession();
+    if (error) throw error;
+    show("setup", false);
+    show("auth", !data.session);
+    show("dashboard", !!data.session);
+    show("signout", !!data.session);
+    if (data.session) await loadDashboard(data.session.user);
+    client.auth.onAuthStateChange((_event, session) => {
+      setTimeout(async () => {
+        show("auth", !session);
+        show("dashboard", !!session);
+        show("signout", !!session);
+        if (session) await loadDashboard(session.user);
+      }, 0);
+    });
+    message("Connected to Supabase.");
+  }
+  async function loadDashboard(user) {
+    currentUser = user;
+    $("welcome").textContent = "Hello, " + (user.user_metadata?.full_name || user.email || "customer");
+    $("accountStatus").textContent = "Signed in as " + user.email;
+    const {data: profile, error: profileError} = await client.from("profiles").select("id,full_name,role").eq("id", user.id).maybeSingle();
+    if (profileError) {
+      $("accountStatus").textContent = "Signed in, but profile setup is incomplete. Run the SQL setup file in Supabase SQL Editor.";
+      message("Profile setup is incomplete: " + profileError.message, true);
+      return;
+    }
+    currentRole = profile?.role === "admin" ? "admin" : "customer";
+    $("rolePill").textContent = currentRole.toUpperCase();
+    show("adminArea", currentRole === "admin");
+    await loadMyDocuments();
+    await loadMyPolicies();
+    if (currentRole === "admin") await loadAdmin();
+  }
+  async function loadMyDocuments() {
+    const {data, error} = await client.from("customer_documents").select("id,document_type,file_name,created_at").order("created_at",{ascending:false});
+    if (error) { $("myDocuments").textContent = "Could not load documents: " + error.message; return; }
+    $("myDocuments").innerHTML = data.length ? "<table><thead><tr><th>Type</th><th>File</th><th>Uploaded</th></tr></thead><tbody>" +
+      data.map(d=>`<tr><td>${escapeHtml(d.document_type)}</td><td>${escapeHtml(d.file_name)}</td><td>${escapeHtml(new Date(d.created_at).toLocaleDateString())}</td></tr>`).join("") +
+      "</tbody></table>" : '<div class="empty">No documents uploaded yet.</div>';
+  }
+  async function loadMyPolicies() {
+    const {data, error} = await client.from("customer_policies").select("id,policy_reference,status,notes,created_at").order("created_at",{ascending:false});
+    if (error) { $("myPolicies").textContent = "Could not load policy updates: " + error.message; return; }
+    $("myPolicies").innerHTML = data.length ? "<table><thead><tr><th>Reference</th><th>Status</th><th>Update</th></tr></thead><tbody>" +
+      data.map(p=>`<tr><td>${escapeHtml(p.policy_reference)}</td><td>${escapeHtml(p.status)}</td><td>${escapeHtml(p.notes||"—")}</td></tr>`).join("") +
+      "</tbody></table>" : '<div class="empty">No policy updates yet.</div>';
+  }
+  async function loadAdmin() {
+    if (currentRole !== "admin") return;
+    $("adminStatus").textContent = "Loading admin data…";
+    const [profiles, docs] = await Promise.all([
+      client.from("profiles").select("id,full_name,role,created_at").order("created_at",{ascending:false}),
+      client.from("customer_documents").select("id,user_id,document_type,file_name,storage_path,created_at").order("created_at",{ascending:false})
+    ]);
+    if (profiles.error || docs.error) {
+      $("adminStatus").textContent = "Could not load admin data. Check the SQL setup and admin role. " + (profiles.error?.message || docs.error?.message);
+      return;
+    }
+    $("adminStatus").textContent = `Loaded ${profiles.data.length} profiles and ${docs.data.length} document records.`;
+    $("adminCustomers").innerHTML = profiles.data.length ? "<table><thead><tr><th>Name</th><th>Role</th><th>User ID (copy for policy update)</th><th>Created</th></tr></thead><tbody>" +
+      profiles.data.map(p=>`<tr><td>${escapeHtml(p.full_name||"—")}</td><td>${escapeHtml(p.role)}</td><td>${escapeHtml(p.id)}</td><td>${escapeHtml(new Date(p.created_at).toLocaleDateString())}</td></tr>`).join("") +
+      "</tbody></table>" : '<div class="empty">No customers found.</div>';
+    $("adminDocuments").innerHTML = docs.data.length ? "<table><thead><tr><th>Type</th><th>File</th><th>User ID</th><th>Date</th><th>Action</th></tr></thead><tbody>" +
+      docs.data.map(d=>`<tr><td>${escapeHtml(d.document_type)}</td><td>${escapeHtml(d.file_name)}</td><td>${escapeHtml(d.user_id)}</td><td>${escapeHtml(new Date(d.created_at).toLocaleDateString())}</td><td><button type="button" class="secondary doc-download" data-path="${escapeHtml(d.storage_path)}">Create download link</button></td></tr>`).join("") +
+      "</tbody></table>" : '<div class="empty">No documents uploaded yet.</div>';
+    document.querySelectorAll(".doc-download").forEach(btn => btn.addEventListener("click", async () => {
+      const {data,error} = await client.storage.from("customer-documents").createSignedUrl(btn.dataset.path, 60);
+      if (error) { message("Could not create link: "+error.message,true); return; }
+      window.open(data.signedUrl, "_blank", "noopener");
+    }));
+  }
+
+  $("connect").addEventListener("click", async () => {
+    try { await connect($("projectUrl").value.trim(), $("publishableKey").value.trim()); }
+    catch(e) { message(e.message || String(e), true); }
+  });
+  if (SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY) connect(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY).catch(e=>message(e.message,true));
+  $("loginForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    try { requireClient(); const {error} = await client.auth.signInWithPassword({email:$("loginEmail").value.trim(),password:$("loginPassword").value}); if(error) throw error; message("Signed in."); }
+    catch(err) { message(err.message || String(err), true); }
+  });
+  $("signupForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    try {
+      requireClient();
+      const {data,error} = await client.auth.signUp({email:$("signupEmail").value.trim(),password:$("signupPassword").value,options:{data:{full_name:$("fullName").value.trim()}}});
+      if(error) throw error;
+      message(data.session ? "Account created and signed in." : "Account created. Check your email to confirm it, then sign in.");
+    } catch(err) { message(err.message || String(err), true); }
+  });
+  $("forgot").addEventListener("click", async () => {
+    try { requireClient(); const email=$("loginEmail").value.trim(); if(!email) throw new Error("Enter your email in the login form first."); const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname}); if(error) throw error; message("If that email is registered, a password reset email will be sent."); }
+    catch(err) { message(err.message || String(err), true); }
+  });
+  $("signout").addEventListener("click", async () => { if(client) { const {error}=await client.auth.signOut(); if(error) message(error.message,true); else { currentUser=null; currentRole="customer"; show("dashboard",false); show("auth",true); show("signout",false); message("Signed out."); } } });
+  $("uploadForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    try {
+      requireClient(); if(!currentUser) throw new Error("Please sign in again.");
+      const file=$("documentFile").files[0]; if(!file) throw new Error("Choose a file first.");
+      if(file.size > 8*1024*1024) throw new Error("File exceeds 8 MB.");
+      if(!["application/pdf","image/jpeg","image/png"].includes(file.type)) throw new Error("Only PDF, JPG or PNG files are allowed.");
+      const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+      const path=`${currentUser.id}/${crypto.randomUUID()}-${safeName}`;
+      const up=await client.storage.from("customer-documents").upload(path,file,{contentType:file.type,upsert:false});
+      if(up.error) throw up.error;
+      const ins=await client.from("customer_documents").insert({user_id:currentUser.id,document_type:$("documentType").value,file_name:file.name,storage_path:path,content_type:file.type,size_bytes:file.size});
+      if(ins.error) { await client.storage.from("customer-documents").remove([path]); throw ins.error; }
+      $("uploadForm").reset(); message("Document uploaded successfully."); await loadMyDocuments();
+    } catch(err) { message(err.message || String(err), true); }
+  });
+  $("refreshAdmin").addEventListener("click", loadAdmin);
+  $("policyForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    try {
+      if(currentRole!=="admin") throw new Error("Admin access required.");
+      const payload={user_id:$("policyCustomer").value.trim(),policy_reference:$("policyNumber").value.trim(),status:$("policyStatus").value,notes:$("policyNotes").value.trim()};
+      const {error}=await client.from("customer_policies").insert(payload); if(error) throw error;
+      $("policyForm").reset(); message("Policy update saved."); await loadAdmin();
+    } catch(err) { message(err.message || String(err), true); }
+  });
+})();
+</script>
+</body>
+</html>
