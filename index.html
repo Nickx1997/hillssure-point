@@ -1,279 +1,72 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b2a54">
-  <meta name="description" content="HillsSure Point — Garo Hills Own Policy Hub. Insurance enquiries for motor, health, term life and home insurance.">
-  <title>HillsSure Point | Garo Hills Own Policy Hub</title>
-  <style>
-    :root{--navy:#092957;--blue:#0969cf;--sky:#eaf5ff;--ink:#102b50;--muted:#5e718a;--green:#079b70;--line:#dbe8f6;--white:#fff}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff;line-height:1.55}
-    a{color:inherit}
-    .wrap{width:min(1160px,calc(100% - 36px));margin:auto}
-    header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
-    .logo{width:47px;height:47px;border-radius:15px;background:linear-gradient(145deg,#0876e4,#082957);display:grid;place-items:center;color:#fff;font-size:25px;box-shadow:0 8px 20px #0a64c533}
-    .brand strong{display:block;font-size:clamp(18px,2.2vw,25px);line-height:1.15;letter-spacing:-.6px}
-    .brand strong span{color:var(--blue)}
-    .brand small{color:var(--muted);font-size:12px}.brand small.tagline{display:inline-block;margin-top:4px;color:var(--blue);font-weight:800;font-size:11px;letter-spacing:.15px}
-    nav{display:flex;align-items:center;gap:23px}
-    nav a{text-decoration:none;font-size:13px;font-weight:650;color:#304865}
-    nav a:hover{color:var(--blue)}
-    .btn{border:0;display:inline-flex;justify-content:center;align-items:center;gap:9px;border-radius:999px;padding:13px 19px;background:var(--blue);color:#fff;font-weight:750;text-decoration:none;cursor:pointer;box-shadow:0 8px 20px #0969cf22;transition:transform .15s,background .15s}
-    .btn:hover{background:#0758af;transform:translateY(-1px)}
-    .btn.whatsapp{background:var(--green)}
-    .btn.whatsapp:hover{background:#07845f}
-    .btn.light{background:#fff;color:var(--navy);box-shadow:none}
-    .hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(circle at 80% 15%,#2b85d5 0,transparent 30%),linear-gradient(115deg,#082957 0%,#0c4f8e 55%,#1676b9 100%)}
-    .hero:after{content:"";position:absolute;width:520px;height:520px;border:1px solid #ffffff1c;border-radius:50%;right:-120px;top:-190px;box-shadow:0 0 0 45px #ffffff08,0 0 0 100px #ffffff06}
-    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center;padding:72px 0 78px}
-    .eyebrow{display:inline-flex;border:1px solid #ffffff58;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:750;letter-spacing:.5px;background:#ffffff0d}
-    h1{font-size:clamp(39px,5vw,64px);line-height:1.04;letter-spacing:-2px;margin:19px 0 18px;max-width:650px}
-    h1 span{color:#60d8ff}
-    .hero p{color:#e1efff;font-size:18px;max-width:570px;margin:0 0 27px}
-    .hero-note{font-size:12px!important;color:#c7ddf5!important;margin-top:14px!important}
-    .hero-art{position:relative;min-height:300px;display:grid;place-items:center}
-    .orbit{width:min(360px,100%);aspect-ratio:1;border-radius:50%;background:linear-gradient(140deg,#ffffff26,#ffffff08);border:1px solid #ffffff3a;display:grid;place-items:center;box-shadow:inset 0 0 60px #ffffff0c}
-    .shield{width:165px;height:190px;clip-path:polygon(50% 0,94% 16%,88% 66%,50% 100%,12% 66%,6% 16%);background:linear-gradient(145deg,#fff,#bde7ff);display:grid;place-items:center;color:var(--blue);font-size:80px;filter:drop-shadow(0 20px 30px #001c4266)}
-    .float-card{position:absolute;background:#fff;color:var(--ink);padding:13px 16px;border-radius:16px;box-shadow:0 15px 40px #001b3b3d;font-size:13px;font-weight:750}
-    .float-card span{display:block;color:var(--muted);font-weight:500;font-size:11px}
-    .fc1{left:0;top:43px}.fc2{right:-5px;bottom:38px}
-    section{padding:64px 0}
-    .section-head{text-align:center;max-width:700px;margin:0 auto 32px}
-    .kicker{color:var(--blue);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px}
-    h2{font-size:clamp(28px,3.5vw,39px);letter-spacing:-1px;line-height:1.15;margin:9px 0 12px}
-    .section-head p,.muted{color:var(--muted)}
-    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-    .service{border:1px solid var(--line);border-radius:20px;padding:24px 21px;background:linear-gradient(155deg,#f5fbff,#fff 75%);min-height:220px;display:flex;flex-direction:column;align-items:flex-start}
-    .service:nth-child(2){background:linear-gradient(155deg,#fff5f7,#fff 75%)}
-    .service:nth-child(3){background:linear-gradient(155deg,#f6f4ff,#fff 75%)}
-    .service:nth-child(4){background:linear-gradient(155deg,#edfcf6,#fff 75%)}
-    .service-icon{width:52px;height:52px;border-radius:17px;background:#d8ecff;color:var(--blue);display:grid;place-items:center;font-size:26px;margin-bottom:18px}
-    .service:nth-child(2) .service-icon{background:#ffe1e8;color:#d93960}
-    .service:nth-child(3) .service-icon{background:#e6e1ff;color:#6650c8}
-    .service:nth-child(4) .service-icon{background:#d8f8e9;color:#07845f}
-    .service h3{margin:0 0 7px;font-size:18px}
-    .service p{margin:0 0 18px;color:var(--muted);font-size:13px}
-    .service a{margin-top:auto;color:var(--blue);font-weight:800;font-size:13px;text-decoration:none}
-    .motor{background:linear-gradient(120deg,#f1f8ff,#fff)}
-    .motor-grid{display:grid;grid-template-columns:1fr .88fr;gap:38px;align-items:start}
-    .motor-copy h2{margin-top:9px}
-    .motor-copy>p{color:var(--muted);max-width:600px}
-    .vehicle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0}
-    .vehicle{border:1px solid #c9def4;border-radius:15px;padding:17px 10px;background:#fff;text-align:center;cursor:pointer;color:var(--ink);font:inherit;transition:.15s}
-    .vehicle:hover,.vehicle[aria-pressed="true"]{border:2px solid var(--blue);padding:16px 9px;background:#f7fbff;box-shadow:0 8px 20px #0969cf12}
-    .vehicle .vicon{font-size:30px;display:block;margin-bottom:7px}
-    .vehicle strong{display:block;font-size:13px}
-    .vehicle small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
-    .trust-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
-    .trust-pill{display:flex;align-items:center;gap:7px;color:#345575;font-size:12px;font-weight:650;background:#e6f3ff;border-radius:10px;padding:10px 12px}
-    .form-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:25px;box-shadow:0 15px 45px #123c6810}
-    .form-title{display:flex;align-items:center;gap:11px;margin-bottom:20px}
-    .form-title .service-icon{margin:0;width:44px;height:44px}
-    .form-title h3{font-size:19px;margin:0}
-    .step{display:flex;gap:11px;align-items:flex-start;margin:15px 0 9px}
-    .step-num{width:26px;height:26px;flex:0 0 26px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
-    .step label,.field label{display:block;font-size:12px;font-weight:750;margin-bottom:7px}
-    .field{margin:14px 0}
-    input,select,textarea{font:inherit;width:100%;padding:13px 13px;border:1px solid #cbd9e8;border-radius:10px;background:#fff;color:var(--ink);outline:none}
-    input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #0969cf18}
-    .help{font-size:11px;color:var(--muted);margin:7px 0 0}
-    .form-card .btn{width:100%;border-radius:10px;margin-top:8px}
-    .or{display:flex;align-items:center;gap:12px;color:#8393a8;font-size:12px;justify-content:center;margin:15px 0}
-    .or:before,.or:after{content:"";height:1px;background:var(--line);width:50px}
-    .hidden{display:none!important}
-    .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-    .why{text-align:center;padding:16px}
-    .why .service-icon{margin:0 auto 12px;border-radius:50%;width:58px;height:58px}
-    .why h3{font-size:15px;margin:0 0 6px}
-    .why p{font-size:13px;color:var(--muted);margin:0}
-    .contact-band{background:linear-gradient(105deg,#0b3f7b,#0873ce);color:#fff;border-radius:22px;padding:26px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .contact-band h2{font-size:24px;margin:0 0 5px}
-    .contact-band p{margin:0;color:#d7eaff;font-size:14px}
-    footer{background:#061f42;color:#fff;padding:40px 0 18px}
-    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
-    footer .brand small{color:#c7d8ec}
-    footer h4{margin:0 0 12px;font-size:13px}
-    footer a,footer p{display:block;color:#c7d8ec;text-decoration:none;font-size:12px;margin:7px 0}
-    footer a:hover{color:#fff}
-    .footer-bottom{border-top:1px solid #ffffff25;margin-top:28px;padding-top:16px;display:flex;justify-content:space-between;gap:15px;color:#c7d8ec;font-size:11px}
-    .disclaimer{font-size:11px;color:#8da2bb;max-width:800px;margin-top:14px}
-    .notice{background:#fff8e8;border:1px solid #f0dfb6;border-radius:12px;padding:13px 15px;color:#6c5422;font-size:12px;margin-top:20px}
-    @media(max-width:900px){nav{gap:12px}nav a{font-size:12px}.hero-grid{gap:20px}.services{grid-template-columns:repeat(2,1fr)}.motor-grid{grid-template-columns:1fr 1fr;gap:22px}.footer-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:680px){.wrap{width:min(100% - 28px,1160px)}.nav{min-height:68px}.brand small{font-size:10px}nav{display:none}.nav>.btn{padding:10px 12px;font-size:12px}.hero-grid{grid-template-columns:1fr;padding:52px 0 56px}.hero-art{min-height:230px}.orbit{width:230px}.shield{width:110px;height:130px;font-size:56px}.fc1{left:2px;top:20px}.fc2{right:0;bottom:10px}.hero p{font-size:16px}.services{gap:10px}.service{padding:17px 14px;min-height:205px}.service h3{font-size:15px}.service p{font-size:12px}.motor-grid{grid-template-columns:1fr}.vehicle-grid{gap:7px}.vehicle{padding:13px 5px}.vehicle:hover,.vehicle[aria-pressed="true"]{padding:12px 4px}.vehicle strong{font-size:11px}.vehicle small{font-size:10px}.form-card{padding:20px}.why-grid{grid-template-columns:repeat(2,1fr);gap:6px}.contact-band{padding:24px;align-items:flex-start;flex-direction:column}.footer-grid{grid-template-columns:1fr 1fr;gap:22px}.footer-grid>div:first-child{grid-column:1/-1}.footer-bottom{flex-direction:column}.section-head{text-align:left}.section-head p{font-size:14px}section{padding:48px 0}}
-  </style>
-</head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#092957"><title>HillsSure Point | Motor Insurance</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--navy:#092957;--blue:#0969cf;--sky:#eaf5ff;--ink:#102b50;--muted:#5e718a;--line:#dbe8f6;--green:#07845f;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:#f6faff}button,input{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:12px 16px;background:var(--blue);color:#fff;font-weight:750}button:disabled{opacity:.5;cursor:not-allowed}input{width:100%;padding:12px;border:1px solid #cbd9e8;border-radius:10px;margin:5px 0 12px}.hidden{display:none!important}.wrap{width:min(1180px,calc(100% - 28px));margin:auto}header{background:white;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:3}.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:12px}.brand{font-size:22px;font-weight:850;color:var(--navy)}.brand span{color:#d99a00}nav{display:flex;gap:20px;align-items:center}nav a{color:var(--ink);text-decoration:none;font-size:13px;font-weight:700}.hero{background:linear-gradient(90deg,rgba(234,246,255,.94),rgba(255,255,255,.70)),url("mountains.png") center 48%/cover;padding:38px 0}.hero-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center}.hero h1{font-size:clamp(32px,4vw,52px);line-height:1.05;margin:0 0 12px}.blue{color:var(--blue)}.muted{color:var(--muted)}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 10px 28px #0929570b;margin-bottom:16px}.field label{font-size:13px;font-weight:750;display:block}.upload-grid,.quote-list,.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.upload-box{border:1px dashed #8bbcff;background:#f8fbff;padding:14px;border-radius:12px}.quote{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:12px;margin:10px 0}.price{font-size:22px;font-weight:850}.small{font-size:12px}.status{padding:12px;border-radius:10px;background:var(--sky);margin:10px 0;white-space:pre-wrap}.error{background:#fff0ef;color:var(--red)}.success{background:#e8fff4;color:#087443}.pill{display:inline-block;padding:4px 9px;border-radius:99px;background:#eaf2fb;font-size:11px;font-weight:800}.modal{position:fixed;inset:0;background:#061f42b8;z-index:10;display:flex;align-items:center;justify-content:center;padding:18px;overflow:auto}.modal-card{background:white;border-radius:18px;padding:24px;width:min(520px,100%);max-height:95vh;overflow:auto}.auth-screen{min-height:100vh;background:#eaf5ff;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);gap:0;padding:0}.auth-visual{min-height:100vh;padding:clamp(28px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between;color:white;background:linear-gradient(180deg,rgba(3,37,82,.08),rgba(3,37,82,.68)),url("mountains.png") center/cover}.auth-logo{display:flex;align-items:center;gap:12px;color:white;font-weight:900;font-size:clamp(25px,3vw,36px);letter-spacing:-1px;text-shadow:0 2px 14px #00244a66}.auth-logo span{color:#ffc849}.mountain-mark{width:64px;height:48px;flex:none;filter:drop-shadow(0 2px 5px #001a3c66)}.auth-tagline h2{font-size:clamp(32px,4vw,50px);line-height:1.05;margin:0 0 15px;max-width:520px}.auth-tagline p{font-size:17px;max-width:480px;color:#f0f7ff}.auth-trust{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;font-weight:750}.auth-trust span{background:#ffffff20;border:1px solid #ffffff55;padding:9px 12px;border-radius:12px;backdrop-filter:blur(8px)}.auth-form-side{display:grid;place-items:center;padding:28px;background:linear-gradient(145deg,#eff8ff,#fff)}.auth-card{background:white;border:1px solid #dce9f7;border-radius:22px;padding:26px;width:min(460px,100%);box-shadow:0 20px 70px #09295718}.auth-card .brand{font-size:23px}.auth-card .brand small{display:block;font-size:12px;font-weight:500;color:var(--muted);letter-spacing:0}.auth-card h1{font-size:27px;margin:15px 0 6px}.auth-card .muted{margin-top:0}.auth-card input{margin:6px 0 14px}.auth-card .tabs{margin:20px 0}.auth-card .btn-wide{width:100%}.tabs{display:flex;gap:8px;margin:16px 0}.tabs button{flex:1;background:#eaf2fb;color:var(--navy)}.tabs button.active{background:var(--blue);color:white}.hidden{display:none!important}footer{padding:25px 0;color:var(--muted);font-size:12px}table{border-collapse:collapse;width:100%;font-size:13px}td,th{text-align:left;padding:9px;border-bottom:1px solid var(--line);vertical-align:top;word-break:break-word}th{background:#f3f8ff}@media(max-width:760px){.hero-grid,.upload-grid,.quote-list,.two{grid-template-columns:1fr}.quote{grid-template-columns:1fr auto}.quote button{grid-column:1/-1}nav{gap:8px;flex-wrap:wrap}.brand{font-size:18px}.auth-screen{grid-template-columns:1fr}.auth-visual{min-height:34vh;padding:24px}.auth-tagline h2{font-size:30px}.auth-trust{display:none}.auth-form-side{padding:18px}.auth-card{padding:22px}}
+</style></head>
 <body>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#home" aria-label="HillsSure Point home">
-      <div class="logo" aria-hidden="true">⬡</div>
-      <div><strong>HillsSure <span>Point</span></strong><small class="tagline">Garo Hills Own Policy Hub</small></div>
-    </a>
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a><a href="#services">Insurance Services</a><a href="#motor">Motor Quote</a><a href="#why">Why Us</a> <a href="account.html">Customer Login</a>
-    </nav>
-    <a class="btn" href="https://wa.me/918837499037?text=Hello%20HillsSure%20Point%2C%20I%20would%20like%20insurance%20assistance." target="_blank" rel="noopener">☏ WhatsApp Us</a>
-  </div>
-</header>
-
+<div id="authScreen" class="auth-screen">
+ <section class="auth-visual">
+  <div><div class="auth-logo"><svg class="mountain-mark" viewBox="0 0 100 70" aria-hidden="true"><path d="M4 62 34 22 47 38 62 8 96 62Z" fill="#fff"/><path d="m25 34 9-12 8 10-8-3-4 6Z M53 25 62 8 78 37 65 29 61 34Z" fill="#b8e4ff"/><path d="M4 62 34 22 47 38 62 8 96 62" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg><div>HillsSure <span>Point</span><small style="display:block;font-size:12px;letter-spacing:0;font-weight:600">Garo Hills Own Policy Hub</small></div></div></div>
+  <div class="auth-tagline"><h2>Your Trusted Insurance Partner</h2><p>Protect your vehicle, health, family and business with simple and reliable insurance support.</p></div>
+  <div class="auth-trust"><span>✓ Secure &amp; Safe</span><span>⚡ Quick &amp; Easy</span><span>▣ Multiple Insurance Options</span><span>☏ Expert Support</span></div>
+ </section>
+ <section class="auth-form-side"><div class="auth-card">
+  <div class="brand">HillsSure <span>Point</span><small>Garo Hills Own Policy Hub</small></div>
+  <h1 id="authTitle">Welcome to HillsSure Point</h1><p class="muted">Please sign in to continue to your account.</p>
+  <div class="tabs"><button id="loginTab" class="active" type="button">Login</button><button id="signupTab" type="button">Sign Up</button></div>
+  <form id="loginForm"><div class="field"><label for="loginEmail">Email or Mobile Number</label><input id="loginEmail" type="email" required autocomplete="email" placeholder="Enter your email address"><label for="loginPassword">Password</label><input id="loginPassword" type="password" required autocomplete="current-password" placeholder="Enter your password"><button type="submit" class="btn-wide">Login</button></div></form>
+  <form id="signupForm" class="hidden"><div class="field"><label for="fullName">Full name</label><input id="fullName" maxlength="100" required autocomplete="name" placeholder="Enter your full name"><label for="signupEmail">Email</label><input id="signupEmail" type="email" required autocomplete="email" placeholder="Enter your email"><label for="signupPassword">Password (at least 8 characters)</label><input id="signupPassword" type="password" minlength="8" required autocomplete="new-password" placeholder="Create a password"><button type="submit" class="btn-wide">Create account</button></div></form>
+  <button id="forgot" type="button" style="background:transparent;color:var(--blue);padding-left:0">Forgot password?</button>
+  <div id="authMessage" class="status hidden" role="status"></div>
+ </div></section>
+</div>
+<div id="app" class="hidden">
+<header><div class="wrap nav"><div class="brand">⛰ HillsSure <span>Point</span></div><nav><a href="#home">Home</a><a href="#motor">Motor Quote</a><a href="#myPolicies">My Policies</a><a href="#myDocuments">My Documents</a></nav><div><span id="userLabel" class="small"></span> <button id="signout" type="button">Sign out</button></div></div></header>
 <main>
-  <section class="hero" id="home">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow">MOTOR &nbsp; | &nbsp; HEALTH &nbsp; | &nbsp; TERM LIFE &nbsp; | &nbsp; HOME</span>
-        <h1>Protect What<br><span>Matters Most.</span></h1>
-        <p>Explore insurance options for your vehicle, health, family and home. Get personal assistance with your enquiry.</p>
-        <a class="btn light" href="#services">Explore Insurance Options&nbsp; →</a>
-        <p class="hero-note">Enquiry support by HillsSure Point — Garo Hills Own Policy Hub. Product availability and eligibility may vary.</p>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="orbit"><div class="shield">✓</div></div>
-        <div class="float-card fc1">🛡️ Personal assistance<span>Help through your enquiry</span></div>
-        <div class="float-card fc2">💬 WhatsApp support<span>Speak with us directly</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
-    <div class="wrap">
-      <div class="section-head"><span class="kicker">Insurance services</span><h2>Cover for what matters to you</h2><p>Choose the type of insurance you want to enquire about. We’ll help you understand the next steps.</p></div>
-      <div class="services">
-        <article class="service"><div class="service-icon">🚘</div><h3>Motor Insurance</h3><p>Two-wheeler, private car and commercial vehicle enquiries.</p><a href="#motor">Get motor assistance →</a></article>
-        <article class="service"><div class="service-icon">♡</div><h3>Health Insurance</h3><p>Ask about individual or family health insurance options.</p><a href="#enquiry" data-type="Health Insurance">Enquire now →</a></article>
-        <article class="service"><div class="service-icon">♧</div><h3>Term Life Insurance</h3><p>Explore life cover options to help protect your family financially.</p><a href="#enquiry" data-type="Term Life Insurance">Enquire now →</a></article>
-        <article class="service"><div class="service-icon">⌂</div><h3>Home Insurance</h3><p>Ask about protection options for your home and belongings.</p><a href="#enquiry" data-type="Home Insurance">Enquire now →</a></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="motor" id="motor">
-    <div class="wrap motor-grid">
-      <div class="motor-copy">
-        <span class="kicker">Motor insurance</span>
-        <h2>Quick & easy motor enquiry</h2>
-        <p>First choose your vehicle category. The registration number field will appear only after you make a selection.</p>
-        <div class="vehicle-grid" role="group" aria-label="Select vehicle category">
-          <button class="vehicle" type="button" data-category="Two-Wheeler" aria-pressed="false"><span class="vicon">🏍️</span><strong>Two-Wheeler</strong><small>Bike / Scooter</small></button>
-          <button class="vehicle" type="button" data-category="Private Car" aria-pressed="false"><span class="vicon">🚗</span><strong>Private Car</strong><small>Personal vehicle</small></button>
-          <button class="vehicle" type="button" data-category="Commercial Vehicle" aria-pressed="false"><span class="vicon">🚚</span><strong>Commercial</strong><small>Goods / passenger</small></button>
-        </div>
-        <div class="trust-row"><div class="trust-pill">🛡️ Personal assistance</div><div class="trust-pill">⚡ Simple enquiry</div><div class="trust-pill">💬 WhatsApp follow-up</div></div>
-        <div class="notice">Please share only information needed for your enquiry. Do not send passwords, OTPs, payment PINs, or other confidential credentials.</div>
-      </div>
-      <div class="form-card" id="motor-form">
-        <div class="form-title"><div class="service-icon">🚘</div><h3>Get Motor Insurance Assistance</h3></div>
-        <div class="field">
-          <label for="vehicle-category">1. Select vehicle category</label>
-          <select id="vehicle-category" required>
-            <option value="">Choose vehicle category</option>
-            <option>Two-Wheeler</option><option>Private Car</option><option>Commercial Vehicle</option>
-          </select>
-        </div>
-        <div class="field hidden" id="registration-field">
-          <label for="registration">2. Vehicle registration number</label>
-          <input id="registration" type="text" placeholder="e.g. ML05AB1234" maxlength="15" autocomplete="off">
-          <p class="help">Your registration number will be included in the WhatsApp enquiry you send.</p>
-        </div>
-        <div class="field">
-          <label for="motor-name">Your name (optional)</label>
-          <input id="motor-name" type="text" placeholder="Enter your name" autocomplete="name">
-        </div>
-        <div class="notice" style="margin:16px 0">📎 <strong>Documents, if requested:</strong> You may be asked to share your vehicle RC, PAN card or Aadhaar through WhatsApp. Please share documents only when necessary and only after confirming what is required. This website cannot attach files to WhatsApp automatically.</div>
-        <button class="btn" id="motor-submit" type="button">Continue on WhatsApp&nbsp; →</button>
-        <div class="or">or</div>
-        <a class="btn whatsapp" href="https://wa.me/918837499037?text=Hello%20HillsSure%20Point%2C%20I%20need%20motor%20insurance%20assistance." target="_blank" rel="noopener">☏ Chat on WhatsApp · +91 88374 99037</a>
-        <a class="btn whatsapp" id="motor-docs" href="https://wa.me/918837499037?text=Hello%20HillsSure%20Point%2C%20I%20need%20motor%20insurance%20assistance.%20Please%20tell%20me%20which%20documents%20are%20required." target="_blank" rel="noopener">📎 WhatsApp &amp; Attach Documents</a>
-        <p class="help">WhatsApp will open so you can attach any requested files yourself. Never share OTPs, passwords, UPI PINs or payment PINs. This form does not calculate premiums or issue a policy.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="why">
-    <div class="wrap">
-      <div class="section-head"><span class="kicker">Why HillsSure Point</span><h2>Support at every step</h2><p>Clear communication and personal help as you explore insurance options.</p></div>
-      <div class="why-grid">
-        <div class="why"><div class="service-icon">🛡️</div><h3>Guided Enquiries</h3><p>Help understanding the next steps.</p></div>
-        <div class="why"><div class="service-icon">✓</div><h3>Clear Information</h3><p>Discuss options and eligibility.</p></div>
-        <div class="why"><div class="service-icon">💬</div><h3>Personal Support</h3><p>Reach us directly on WhatsApp.</p></div>
-        <div class="why"><div class="service-icon">📍</div><h3>Personal Assistance</h3><p>Friendly support for your insurance enquiries.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="enquiry" style="padding-top:0">
-    <div class="wrap">
-      <div class="contact-band">
-        <div><h2>Have an insurance question?</h2><p>Tell us what you need and we’ll follow up through WhatsApp.</p><p style="margin-top:8px"><a href="mailto:hillssurepoint@gmail.com" style="color:#fff;font-weight:750">✉ hillssurepoint@gmail.com</a></p></div>
-        <a class="btn whatsapp" id="general-whatsapp" href="https://wa.me/918837499037?text=Hello%20HillsSure%20Point%2C%20I%20would%20like%20insurance%20assistance." target="_blank" rel="noopener">Message +91 88374 99037&nbsp; →</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <a class="brand" href="#home"><div class="logo">⬡</div><div><strong>HillsSure <span>Point</span></strong><small class="tagline">Garo Hills Own Policy Hub</small></div></a>
-        <p>Insurance enquiry assistance for individuals and families.</p>
-      </div>
-      <div><h4>Quick Links</h4><a href="#home">Home</a><a href="#services">Insurance Services</a><a href="#motor">Motor Enquiry</a><a href="#why">Why Us</a></div>
-      <div><h4>Insurance Services</h4><a href="#motor">Motor Insurance</a><a href="#enquiry" data-type="Health Insurance">Health Insurance</a><a href="#enquiry" data-type="Term Life Insurance">Term Life Insurance</a><a href="#enquiry" data-type="Home Insurance">Home Insurance</a></div>
-      <div><h4>Contact Us</h4><a href="https://wa.me/918837499037" target="_blank" rel="noopener">☏ +91 88374 99037</a><a href="mailto:hillssurepoint@gmail.com">✉ hillssurepoint@gmail.com</a><p>Meghalaya, India</p></div>
-    </div>
-    <p class="disclaimer">HillsSure Point is an insurance enquiry and assistance brand. “Garo Hills Own Policy Hub” is a tagline, not the business name. Insurance products, quotes, eligibility and issuance are subject to the relevant insurer and the authorised distribution platform's terms. HillsSure Point is not presented as an official Policybazaar website. Any PbPartner / Policybazaar affiliation should be described only in accordance with applicable platform rules and permissions.</p>
-    <div class="footer-bottom"><span>© <span id="year"></span> HillsSure Point. All rights reserved.</span><span>Insurance enquiries · WhatsApp assistance</span></div>
-  </div>
-</footer>
+<section id="home" class="hero"><div class="wrap hero-grid"><div><span class="pill">TRUSTED INSURANCE ENQUIRY SUPPORT</span><h1>Get the Best <span class="blue">Motor Insurance</span></h1><p class="muted">Enter your vehicle registration number, compare available quotes, and continue when you're ready.</p><p class="small muted">Prices shown are quotes configured by the site administrator and are subject to insurer confirmation.</p></div>
+<div class="card" id="motor"><h2>Vehicle Registration Number</h2><form id="quoteSearch"><label for="registration">Vehicle number</label><input id="registration" placeholder="e.g. ML05AB1234" maxlength="20" required><button type="submit">Get Quotes →</button></form><div id="quoteMessage" class="status hidden"></div></div></div></section>
+<section class="wrap" style="padding-top:24px"><div class="card"><h2>Available Insurance Quotes</h2><p class="muted small">Select a quote to view its price and coverage. Documents are requested only after you choose Buy Now.</p><div id="quotes"><div class="status">Enter your vehicle registration number to load available quotes.</div></div></div>
+<div class="card" id="myPolicies"><h2>My Policies</h2><div id="policies"><div class="muted">No policy documents loaded.</div></div></div>
+<div class="card" id="myDocuments"><h2>My Documents</h2><div id="documents"><div class="muted">No documents uploaded yet.</div></div></div>
+<div id="adminLink" class="card hidden"><h2>Admin tools</h2><p class="muted">Your account has administrator access.</p><a href="admin.html">Open separate admin panel →</a></div>
+</section></main><footer><div class="wrap">HillsSure Point · Insurance products, premiums and issuance remain subject to authorized insurer terms and applicable rules.</div></footer>
+</div>
+<div id="buyModal" class="modal hidden"><div class="modal-card"><div style="display:flex;justify-content:space-between;gap:12px"><h2>Complete Your Details</h2><button id="closeBuy" type="button" style="background:#eaf2fb;color:#092957">✕</button></div><div id="selectedQuote"></div>
+<form id="documentForm"><div class="field"><label for="panFile">PAN Card *</label><input id="panFile" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div>
+<div class="field"><label for="aadhaarLast4">Last 4 digits of Aadhaar number *</label><input id="aadhaarLast4" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="e.g. 6789" required></div>
+<div class="upload-grid"><div class="upload-box"><label for="aadhaarFront">Aadhaar Front Side *</label><input id="aadhaarFront" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div><div class="upload-box"><label for="aadhaarBack">Aadhaar Back Side *</label><input id="aadhaarBack" type="file" accept=".pdf,.jpg,.jpeg,.png" required></div></div>
+<p class="small muted">Upload only documents required for your authorized insurance process. Files are private and restricted by account permissions.</p><button id="submitDocs" type="submit" style="width:100%">Submit Documents →</button></form><div id="buyMessage" class="status hidden"></div></div></div>
+<div id="paymentModal" class="modal hidden"><div class="modal-card"><div style="display:flex;justify-content:space-between"><h2>Make Payment</h2><button id="closePayment" type="button" style="background:#eaf2fb;color:#092957">✕</button></div><div id="paymentContent"><p>Payment instructions will appear here if the administrator has activated a UPI QR code.</p></div><div id="paymentMessage" class="status hidden"></div></div></div>
 <script>
-  const categorySelect = document.getElementById('vehicle-category');
-  const registrationField = document.getElementById('registration-field');
-  const registrationInput = document.getElementById('registration');
-  const vehicleButtons = [...document.querySelectorAll('.vehicle')];
-
-  function chooseCategory(category) {
-    categorySelect.value = category || '';
-    const chosen = Boolean(category);
-    registrationField.classList.toggle('hidden', !chosen);
-    registrationInput.required = chosen;
-    vehicleButtons.forEach(btn => btn.setAttribute('aria-pressed', String(btn.dataset.category === category)));
-    if (!chosen) registrationInput.value = '';
-  }
-  categorySelect.addEventListener('change', () => chooseCategory(categorySelect.value));
-  vehicleButtons.forEach(btn => btn.addEventListener('click', () => {
-    chooseCategory(btn.dataset.category);
-    document.getElementById('motor-form').scrollIntoView({behavior:'smooth',block:'center'});
-    if (chosenFocus()) registrationInput.focus({preventScroll:true});
-  }));
-  function chosenFocus(){ return !registrationField.classList.contains('hidden'); }
-
-  document.getElementById('motor-submit').addEventListener('click', () => {
-    const category = categorySelect.value;
-    if (!category) {
-      categorySelect.focus();
-      categorySelect.setCustomValidity('Please select a vehicle category first.');
-      categorySelect.reportValidity();
-      categorySelect.addEventListener('change', () => categorySelect.setCustomValidity(''), {once:true});
-      return;
-    }
-    const reg = registrationInput.value.trim();
-    if (!reg) { registrationInput.focus(); registrationInput.setCustomValidity('Please enter the vehicle registration number.'); registrationInput.reportValidity(); registrationInput.addEventListener('input',()=>registrationInput.setCustomValidity(''),{once:true}); return; }
-    const name = document.getElementById('motor-name').value.trim();
-    const message = `Hello Garo Hills Own Policy Hub, I would like motor insurance assistance.\nVehicle category: ${category}\nRegistration number: ${reg}${name ? '\nName: '+name : ''}\nPlease tell me which documents are required. I will attach any requested documents in WhatsApp.`;
-    window.open('https://wa.me/918837499037?text='+encodeURIComponent(message), '_blank', 'noopener');
-  });
-
-  document.querySelectorAll('[data-type]').forEach(link => link.addEventListener('click', () => {
-    const type = link.dataset.type;
-    const href = 'https://wa.me/918837499037?text='+encodeURIComponent(`Hello Garo Hills Own Policy Hub, I would like to enquire about ${type}.`);
-    document.getElementById('general-whatsapp').href = href;
-  }));
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
+(() => {
+const URL="https://xksailxiewobohnfmihq.supabase.co";
+const KEY="sb_publishable_thPTA3fcUgU3itJ2bnWITQ_IHyUr-Uv";
+const sb=window.supabase.createClient(URL,KEY); let user=null, role="customer", selected=null, requestId=null;
+const $=id=>document.getElementById(id), show=(id,on)=>$(id).classList.toggle("hidden",!on), safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function msg(id,text,error=false){$(id).textContent=text;$(id).classList.remove("hidden","error","success");$(id).classList.add(error?"error":"success")}
+function authTab(which){show("loginForm",which==="login");show("signupForm",which==="signup");$("loginTab").classList.toggle("active",which==="login");$("signupTab").classList.toggle("active",which==="signup");$("authTitle").textContent=which==="login"?"Welcome back":"Create your account"}
+$("loginTab").onclick=()=>authTab("login");$("signupTab").onclick=()=>authTab("signup");
+async function start(session){user=session?.user||null;show("authScreen",!user);show("app",!!user);if(!user)return;$("userLabel").textContent=user.email||"";await loadRole();await loadQuotes();await loadPolicies();await loadDocs()}
+async function loadRole(){const {data,error}=await sb.from("profiles").select("role").eq("id",user.id).maybeSingle();role=!error&&data?.role==="admin"?"admin":"customer";show("adminLink",role==="admin")}
+$("loginForm").onsubmit=async e=>{e.preventDefault();const {error}=await sb.auth.signInWithPassword({email:$("loginEmail").value.trim(),password:$("loginPassword").value});if(error)msg("authMessage",error.message,true)};
+$("signupForm").onsubmit=async e=>{e.preventDefault();const {data,error}=await sb.auth.signUp({email:$("signupEmail").value.trim(),password:$("signupPassword").value,options:{data:{full_name:$("fullName").value.trim()}}});if(error)msg("authMessage",error.message,true);else msg("authMessage",data.session?"Account created.":"Account created. Check your email if confirmation is required.")};
+$("forgot").onclick=async()=>{const email=$("loginEmail").value.trim();if(!email)return msg("authMessage","Enter your email first.",true);const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});msg("authMessage",error?.message||"If the address is registered, a reset email will be sent.",!!error)};
+$("signout").onclick=async()=>{await sb.auth.signOut()};
+$("quoteSearch").onsubmit=async e=>{e.preventDefault();const reg=$("registration").value.trim().toUpperCase();if(!reg)return;const {data,error}=await sb.from("quotes").select("id,company,plan_name,coverage,base_premium,discount_type,discount_value,final_premium,active").eq("active",true).order("final_premium");if(error)return msg("quoteMessage","Could not load quotes. "+error.message,true);const {data:rq,error:re}=await sb.from("quote_requests").insert({user_id:user.id,vehicle_registration:reg}).select("id").single();if(re)return msg("quoteMessage",re.message,true);requestId=rq.id;renderQuotes(data);};
+function renderQuotes(list){$("quotes").innerHTML=list.length?list.map(q=>`<div class="quote"><div><strong>${safe(q.company)}</strong><div>${safe(q.plan_name)}</div><div class="small muted">${safe(q.coverage||"Coverage details provided on confirmation")}</div></div><div><div class="price">${money(q.final_premium)}</div><div class="small muted">Final premium</div></div><button type="button" data-buy="${q.id}">Buy Now</button></div>`).join(""):'<div class="status">No quotes are currently available. Please check again later.</div>';document.querySelectorAll("[data-buy]").forEach(b=>b.onclick=()=>beginBuy(list.find(q=>q.id===b.dataset.buy)))}
+function money(v){return "₹"+Number(v||0).toLocaleString("en-IN",{maximumFractionDigits:2})}
+function beginBuy(q){selected=q;$("selectedQuote").innerHTML=`<div class="status"><strong>${safe(q.company)} · ${safe(q.plan_name)}</strong><br>Vehicle: ${safe($("registration").value.toUpperCase())}<br>Premium: ${money(q.final_premium)}</div>`;show("buyModal",true)}
+$("closeBuy").onclick=()=>show("buyModal",false);$("closePayment").onclick=()=>show("paymentModal",false);
+async function uploadPrivate(file,type){if(!file)throw new Error("Please choose every required document.");if(file.size>5*1024*1024)throw new Error("Each file must be 5 MB or smaller.");if(!["application/pdf","image/jpeg","image/png"].includes(file.type))throw new Error("Only PDF, JPG or PNG files are accepted.");const path=`${user.id}/${crypto.randomUUID()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,"_")}`;const up=await sb.storage.from("customer-documents").upload(path,file,{contentType:file.type,upsert:false});if(up.error)throw up.error;const ins=await sb.from("customer_documents").insert({user_id:user.id,document_type:type,file_name:file.name,storage_path:path,content_type:file.type,size_bytes:file.size,quote_request_id:requestId});if(ins.error){await sb.storage.from("customer-documents").remove([path]);throw ins.error}}
+$("documentForm").onsubmit=async e=>{e.preventDefault();$("submitDocs").disabled=true;try{if(!$("aadhaarLast4").checkValidity())throw new Error("Enter exactly the last four digits.");await uploadPrivate($("panFile").files[0],"PAN Card");await uploadPrivate($("aadhaarFront").files[0],"Aadhaar Front");await uploadPrivate($("aadhaarBack").files[0],"Aadhaar Back");const upd=await sb.from("quote_requests").update({selected_quote_id:selected.id,aadhaar_last4:$("aadhaarLast4").value,stage:"documents_submitted"}).eq("id",requestId);if(upd.error)throw upd.error;show("buyModal",false);await showPayment();await loadDocs()}catch(err){msg("buyMessage",err.message||String(err),true)}finally{$("submitDocs").disabled=false}};
+async function showPayment(){const {data,error}=await sb.from("site_settings").select("upi_qr_path,upi_display_name,upi_id").eq("id",1).maybeSingle();if(error)return msg("paymentMessage","Payment settings are not available yet. Contact the site administrator.",true);let html=`<div class="status"><strong>Amount: ${money(selected.final_premium)}</strong><br>${safe(selected.company)} · ${safe(selected.plan_name)}</div>`;if(data?.upi_qr_path){const {data:link,error:le}=await sb.storage.from("admin-assets").createSignedUrl(data.upi_qr_path,300);if(!le)html+=`<img src="${link.signedUrl}" alt="UPI QR code" style="display:block;max-width:240px;width:100%;margin:12px auto">`;else html+='<p>QR code is temporarily unavailable.</p>'}else html+='<p>No active UPI QR code is available. Please contact the administrator.</p>';html+=`<p class="small">UPI ID: ${safe(data?.upi_id||"See QR code")}<br>Pay only the amount shown. Your payment status will remain pending until the administrator updates it.</p><form id="paymentRefForm"><label>Payment reference / UTR (if available)</label><input id="utr" maxlength="100" placeholder="Enter transaction reference"><button type="submit">Submit Payment Details</button></form>`;$("paymentContent").innerHTML=html;show("paymentModal",true);$("paymentRefForm").onsubmit=async e=>{e.preventDefault();const {error:pe}=await sb.from("payment_records").insert({user_id:user.id,quote_request_id:requestId,amount:selected.final_premium,utr:$("utr").value.trim()||null,status:"Pending"});if(pe)return msg("paymentMessage",pe.message,true);msg("paymentMessage","Payment details submitted. Status is Pending until the administrator reviews it.");await loadPolicies()}}
+async function loadPolicies(){const {data,error}=await sb.from("customer_policies").select("id,policy_reference,status,notes,storage_path,created_at").order("created_at",{ascending:false});if(error){$("policies").textContent="Policy list is not configured yet.";return}if(!data.length){$("policies").textContent="No policies assigned yet.";return}$("policies").innerHTML=data.map(p=>`<div class="quote"><div><strong>${safe(p.policy_reference)}</strong><div class="small">${safe(p.status)}</div><div class="small muted">${safe(p.notes||"")}</div></div>${p.storage_path?`<button data-policy="${safe(p.storage_path)}">Download Policy</button>`:""}</div>`).join("");document.querySelectorAll("[data-policy]").forEach(b=>b.onclick=async()=>{const {data,error}=await sb.storage.from("policy-documents").createSignedUrl(b.dataset.policy,60);if(error)alert("Download unavailable: "+error.message);else location.href=data.signedUrl})}
+async function loadDocs(){const {data,error}=await sb.from("customer_documents").select("id,document_type,file_name,created_at").order("created_at",{ascending:false});if(error){$("documents").textContent="Documents are not configured yet.";return}if(!data.length){$("documents").textContent="No documents uploaded yet.";return}$("documents").innerHTML="<table><thead><tr><th>Document</th><th>File</th><th>Uploaded</th></tr></thead><tbody>"+data.map(d=>`<tr><td>${safe(d.document_type)}</td><td>${safe(d.file_name)}</td><td>${new Date(d.created_at).toLocaleDateString()}</td></tr>`).join("")+"</tbody></table>"}
+sb.auth.onAuthStateChange((_event,session)=>setTimeout(()=>start(session),0));sb.auth.getSession().then(({data})=>start(data.session)).catch(e=>msg("authMessage",e.message,true));
+})();
+</script></body></html>
